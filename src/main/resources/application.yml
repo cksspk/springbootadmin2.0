@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: admin-server
+  security:
+    user:
+      name: "user"
+      password: "password"
+server:
+  port: 8788
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
+  instance:
+    metadata-map:
+      user.name: "user"         #These two are needed so that the server
+      user.password: "password" #can access the protected client endpoints    
